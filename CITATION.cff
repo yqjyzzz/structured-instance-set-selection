@@ -10,7 +10,7 @@ authors:
 version: 0.1.0
 date-released: 2026-08-11
 repository-code: "https://github.com/yqjyzzz/structured-instance-set-selection"
-license: "NOASSERTION"
+license: "MIT"
 keywords:
   - surgical instrument segmentation
   - instance-set selection
