@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-title: "CMIG graph-based instance-set selection reproducibility capsule"
+title: "Structured candidate-set selection for surgical instrument instance segmentation"
 message: "If you use this artifact, cite the associated manuscript and this repository release."
 type: software
 authors:
@@ -9,11 +9,10 @@ authors:
     given-names: Yang
 version: 0.1.0
 date-released: 2026-08-11
-repository-code: "PENDING_AUTHOR_PUBLIC_REPOSITORY_URL"
+repository-code: "https://github.com/yqjyzzz/structured-instance-set-selection"
 license: "NOASSERTION"
 keywords:
   - surgical instrument segmentation
   - instance-set selection
   - graph neural network
   - reproducibility
-

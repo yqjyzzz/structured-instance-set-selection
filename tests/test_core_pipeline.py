@@ -1,5 +1,5 @@
-from cmig_qgraph.demo import build_demo_graph, run_demo
-from cmig_qgraph.rid_qgraph_core import EDGE_FEATURES, NODE_FEATURES
+from structured_instance_selection.demo import build_demo_graph, run_demo
+from structured_instance_selection.rid_qgraph_core import EDGE_FEATURES, NODE_FEATURES
 
 
 def test_candidate_graph_contract() -> None:

@@ -3,9 +3,9 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "cmig-qgraph-reproduction"
+name = "structured-instance-set-selection"
 version = "0.1.0"
-description = "Reproducibility capsule for graph-based surgical instrument instance-set selection"
+description = "Reproducible implementation of structured candidate-set selection for surgical instrument instance segmentation"
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [
@@ -25,7 +25,7 @@ dev = [
 ]
 
 [project.scripts]
-cmig-qgraph-demo = "cmig_qgraph.demo:main"
+structured-instance-demo = "structured_instance_selection.demo:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

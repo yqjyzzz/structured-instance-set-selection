@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from cmig_qgraph.demo import run_demo  # noqa: E402
+from structured_instance_selection.demo import run_demo  # noqa: E402
 
 
 def main() -> None:

@@ -1,4 +1,4 @@
-# 拓扑感知的手术器械实例集选择
+# 面向手术器械实例分割的结构化候选集选择
 
 这个项目研究候选掩码如何组成最终实例集合。上游 Mask2Former 固定输出候选掩码，本仓库从候选集合开始：提取节点和成对几何特征，建立候选图，预测候选有效性、拓扑状态、竞争关系与实例数量，再由 MILP 求出最终子集。
 
@@ -42,7 +42,7 @@ python scripts\check_all.py
 ```powershell
 python scripts\verify_release.py
 python scripts\smoke_test.py
-python -m cmig_qgraph
+python -m structured_instance_selection
 python -m pytest -q
 ```
 
@@ -51,13 +51,13 @@ python -m pytest -q
 ## 代码入口
 
 ```text
-src/cmig_qgraph/
+src/structured_instance_selection/
 ├── rid_qgraph_core.py          候选图、两条模型路径、多任务损失、MILP
 ├── rid_qgraph_train_group.py   源域开发集训练与评估
 ├── rid_qgraph_a2_train_group.py
 │                               A2 监督消融
 ├── demo.py                     不依赖真实数据的端到端示例
-└── __main__.py                 python -m cmig_qgraph
+└── __main__.py                 python -m structured_instance_selection
 ```
 
 论文概念与函数的对应关系见 [代码索引](docs/03_代码架构.md)。
@@ -89,7 +89,7 @@ tests/        自动化测试
 
 仓库不分发临床图像、真实掩码、候选缓存、模型权重或远程运行日志。完整训练需要获得数据授权并恢复对应运行环境。
 
-软件许可证和公共仓库地址仍待作者确认。公开前请检查 [发布清单](docs/08_发布清单.md) 和 [许可证状态](LICENSE_STATUS.md)。
+公共仓库地址已配置在 `CITATION.cff`。软件许可证仍需作者确认；公开发布前请检查 [发布清单](docs/08_发布清单.md) 和 [许可证状态](LICENSE_STATUS.md)。
 
 ## 阅读顺序
 

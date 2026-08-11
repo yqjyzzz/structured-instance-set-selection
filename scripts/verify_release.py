@@ -26,11 +26,11 @@ REQUIRED = (
     "docs/08_发布清单.md",
     "protocol/QGRAPH_A2_PROTOCOL.json",
     "protocol/QGRAPH_A2_COMPUTE_MANIFEST.json",
-    "src/cmig_qgraph/__init__.py",
-    "src/cmig_qgraph/demo.py",
-    "src/cmig_qgraph/rid_qgraph_core.py",
-    "src/cmig_qgraph/rid_qgraph_train_group.py",
-    "src/cmig_qgraph/rid_qgraph_a2_train_group.py",
+    "src/structured_instance_selection/__init__.py",
+    "src/structured_instance_selection/demo.py",
+    "src/structured_instance_selection/rid_qgraph_core.py",
+    "src/structured_instance_selection/rid_qgraph_train_group.py",
+    "src/structured_instance_selection/rid_qgraph_a2_train_group.py",
     "tests/test_core_pipeline.py",
 )
 
