@@ -1,0 +1,143 @@
+{
+  "schema_version": "rid_qgraph_a2_protocol_v1",
+  "protocol_id": "RID-QGRAPH-ABL-A2-SUPERVISION",
+  "data_contract": {
+    "dataset": "CholecInstanceSeg",
+    "split": "source-development",
+    "frames": 4246,
+    "cases": 18,
+    "source_test_access": false,
+    "external_data_access": false
+  },
+  "frozen_design": {
+    "discovery_seeds": [17, 23, 41],
+    "outer_folds": [1, 2, 3, 4, 5, 6],
+    "graph_seeds": [101, 103, 107],
+    "node_features": [
+      "tool_score",
+      "normalized_emitted_rank",
+      "mask_area",
+      "area_ratio",
+      "perimeter_pixels",
+      "component_count",
+      "frame_candidate_count",
+      "empty_query_count",
+      "union_area"
+    ],
+    "edge_features": [
+      "pair_iou",
+      "left_contained_by_right",
+      "right_contained_by_left",
+      "overlap_coefficient",
+      "absolute_log_area_ratio",
+      "absolute_score_margin",
+      "boundary_distance_pixels",
+      "contact_pixels"
+    ],
+    "full_candidate_graph": true,
+    "case_roles": "RID_PHASE1_CASE_FOLDS.csv",
+    "selector": "RID-QGRAPH-M1 exact structured selector",
+    "pair_penalty": 1.0,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "gradient_clipping": 1.0,
+    "epochs": 30,
+    "checkpoint_rule": "earliest-best calibration case-balanced native-instance F1"
+  },
+  "training_arms": {
+    "full_control": {
+      "loss": ["node_validity", "topology", "pair_competition", "cardinality"],
+      "saved_calibration_policies": [
+        "full_pair_common",
+        "full_cardinality_common"
+      ]
+    },
+    "no_pair_supervision": {
+      "loss": ["node_validity", "topology", "cardinality"],
+      "calibration_policy": "full_pair_common",
+      "pair_policy": "clip(max(pair_iou,left_contained_by_right,right_contained_by_left,overlap_coefficient),0,1)",
+      "cardinality_policy": "predicted cardinality",
+      "untrained_pair_head_output_used": false
+    },
+    "no_cardinality_supervision": {
+      "loss": ["node_validity", "topology", "pair_competition"],
+      "calibration_policy": "full_cardinality_common",
+      "pair_policy": "learned pair probability",
+      "cardinality_policy": "Python int(round(statistics.median(fit-role frame GT counts))), clipped to eligible count",
+      "untrained_cardinality_head_output_used": false
+    }
+  },
+  "fairness_contract": {
+    "identical_parameter_initialization_within_seed_fold_graph_seed": true,
+    "identical_fit_only_standardizer": true,
+    "identical_training_order": true,
+    "identical_optimizer": true,
+    "explicit_loss_sums_only": true,
+    "full_loss_minus_removed_loss_forbidden": true,
+    "calibration_or_held_out_labels_in_fit_only_cardinality_forbidden": true
+  },
+  "stage_a": {
+    "graph_seeds": [101],
+    "atomic_groups": 54,
+    "purpose": "prespecified directional and safety futility decision only",
+    "pair_continue": {
+      "minimum_discovery_seeds": 2,
+      "delta_f1_positive": true,
+      "delta_set_failure_positive": true,
+      "solver_flags_zero": true,
+      "union_dice_no_clear_harm": true,
+      "empty_frame_no_clear_harm": true,
+      "not_single_case_driven": true
+    },
+    "cardinality_continue": {
+      "minimum_discovery_seeds": 2,
+      "delta_count_mae_positive": true,
+      "delta_f1_or_set_failure_favorable": true,
+      "solver_flags_zero": true,
+      "union_dice_no_clear_harm": true,
+      "empty_frame_no_clear_harm": true,
+      "not_single_case_driven": true
+    },
+    "holm_used_for_continue": false
+  },
+  "stage_b": {
+    "graph_seeds": [103, 107],
+    "selection_rule": "continue full_control plus only the supervision arm(s) passing the frozen Stage A futility gate"
+  },
+  "final_inference": {
+    "bootstrap_unit": "case",
+    "bootstrap_replicates": 10000,
+    "bootstrap_seed": 20260729,
+    "confidence_interval": 0.95,
+    "holm_family": [
+      "delta_f1_pair",
+      "delta_set_failure_pair",
+      "delta_f1_cardinality",
+      "delta_set_failure_cardinality",
+      "delta_count_mae_cardinality"
+    ],
+    "loco": true,
+    "minimum_consistent_discovery_seeds": 2,
+    "union_dice_noninferiority_margin": -0.01,
+    "empty_frame_false_activation_must_not_increase": true,
+    "solver_flags": 0,
+    "allowed_decisions": [
+      "SUPERVISION_SUPPORTED",
+      "SUPERVISION_MIXED",
+      "SUPERVISION_NOT_SUPPORTED",
+      "FUTILITY_STOPPED"
+    ],
+    "does_not_redefine_m1_gate": true
+  },
+  "forbidden": [
+    "source-test access",
+    "external-result-guided continuation",
+    "new inference ablations",
+    "embedding",
+    "hyperparameter search",
+    "method modification",
+    "result-dependent seed/fold mapping",
+    "overwriting A1 assets"
+  ]
+}

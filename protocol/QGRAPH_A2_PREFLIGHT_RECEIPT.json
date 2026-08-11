@@ -1,0 +1,58 @@
+{
+  "schema_version": "rid_qgraph_a2_preflight_v1",
+  "status": "PASS_A2_SUPERVISION_PREFLIGHT",
+  "protocol_id": "RID-QGRAPH-ABL-A2-SUPERVISION",
+  "completed_at": "2026-07-29T10:38:01.784794+00:00",
+  "tests": {
+    "three_arm_initial_state_parameter_exact": true,
+    "identical_optimizer_contract": true,
+    "no_pair_explicit_loss_sum": true,
+    "no_cardinality_explicit_loss_sum": true,
+    "full_loss_subtraction_forbidden": true,
+    "removed_head_has_no_effective_gradient": true,
+    "shared_layers_have_finite_nonzero_gradient": true,
+    "common_policy_inputs_elementwise_identical": true,
+    "fit_only_cardinality_label_isolation": true,
+    "candidate_permutation_invariance": true,
+    "duplicate_merge_split_synthetic_targets": true,
+    "zero_instance_all_empty_frame": true,
+    "exact_selector_pair_penalty_one": true,
+    "fixed_seed_reproducibility": true,
+    "fit_calibration_held_out_case_isolation": true,
+    "source_test_external_path_firewall": true,
+    "partial_to_final_atomic_contract": true,
+    "tiny_three_arm_training_checkpoint_reload": true
+  },
+  "initial_state_sha256": "9CE89A1863F929511A372302FC7FB34FFAB851C114EB4C373BCCFEBD84E27FA1",
+  "gradient_audit": {
+    "full_control": {
+      "pair_head_effective_gradient": true,
+      "cardinality_head_effective_gradient": true,
+      "shared_layers_finite_nonzero_gradient": true,
+      "component_values_finite": true
+    },
+    "no_pair_supervision": {
+      "pair_head_effective_gradient": false,
+      "cardinality_head_effective_gradient": true,
+      "shared_layers_finite_nonzero_gradient": true,
+      "component_values_finite": true
+    },
+    "no_cardinality_supervision": {
+      "pair_head_effective_gradient": true,
+      "cardinality_head_effective_gradient": false,
+      "shared_layers_finite_nonzero_gradient": true,
+      "component_values_finite": true
+    }
+  },
+  "hashes": {
+    "protocol_sha256": "8E03BE49D0E0513917AEAD84461B079DC9F299B9CB19440C084FA3D59AB70641",
+    "runner_sha256": "F289454F0E32BF7A4AF619840CDBCF9801C998AE24369BE2FE7C42704169A7CB",
+    "core_sha256": "C52DCC98B05796F60DA4CC1461F31CF8698D264BED6154373839A86D482795F1",
+    "folds_sha256": "08EA12EB8D63B93D34121838526DE0698AC29CD3D9D2EFF0F7212A8FC6F4D162",
+    "preflight_tool_sha256": "B1A09345E9EA0E6DCED778D1A6E3FC41154CBD63741925D7BD3B5F02BD54E2BE"
+  },
+  "formal_stage_a_released": true,
+  "scientific_results_viewed": false,
+  "source_test_access": false,
+  "external_access": false
+}

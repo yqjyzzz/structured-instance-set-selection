@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+title: "CMIG graph-based instance-set selection reproducibility capsule"
+message: "If you use this artifact, cite the associated manuscript and this repository release."
+type: software
+authors:
+  - family-names: Zhang
+    given-names: Ze
+  - family-names: Zhang
+    given-names: Yang
+version: 0.1.0
+date-released: 2026-08-11
+repository-code: "PENDING_AUTHOR_PUBLIC_REPOSITORY_URL"
+license: "NOASSERTION"
+keywords:
+  - surgical instrument segmentation
+  - instance-set selection
+  - graph neural network
+  - reproducibility
+

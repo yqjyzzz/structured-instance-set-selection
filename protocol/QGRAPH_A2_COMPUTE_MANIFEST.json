@@ -1,0 +1,80 @@
+{
+  "schema_version": "rid_qgraph_a2_compute_manifest_v1",
+  "protocol_id": "RID-QGRAPH-ABL-A2-SUPERVISION",
+  "frozen_host_mapping": [
+    {
+      "role": "seed17-A",
+      "port": 32743,
+      "discovery_seed": 17,
+      "outer_folds": [1, 2, 3],
+      "stage_a_before_endoscapes": true
+    },
+    {
+      "role": "seed17-B",
+      "port": 27028,
+      "discovery_seed": 17,
+      "outer_folds": [4, 5, 6],
+      "endoscapes_candidate_generation_first": true
+    },
+    {
+      "role": "seed23-A",
+      "port": 31402,
+      "discovery_seed": 23,
+      "outer_folds": [1, 2, 3],
+      "stage_a_before_endoscapes": true
+    },
+    {
+      "role": "seed23-B",
+      "port": 15659,
+      "discovery_seed": 23,
+      "outer_folds": [4, 5, 6],
+      "endoscapes_candidate_generation_first": true
+    },
+    {
+      "role": "seed41-A",
+      "port": 27113,
+      "discovery_seed": 41,
+      "outer_folds": [1, 2, 3],
+      "stage_a_before_endoscapes": true
+    },
+    {
+      "role": "seed41-B",
+      "port": 36656,
+      "discovery_seed": 41,
+      "outer_folds": [4, 5, 6],
+      "endoscapes_candidate_generation_first": true
+    }
+  ],
+  "environment_audit": {
+    "gpu": "NVIDIA GeForce RTX 4090 24564 MiB",
+    "cpu_logical_cores_each": 128,
+    "pytorch": "2.8.0+cu128",
+    "cuda_build": "12.8",
+    "gpu_idle_at_freeze": true,
+    "healthy_old_qgraph_tasks": 0
+  },
+  "cache_policy": {
+    "seed17_hosts": [32743, 27028],
+    "seed23_hosts": [31402, 15659],
+    "seed41_hosts": [27113, 36656],
+    "same_seed_cache_already_present_on_both_hosts": true,
+    "cross_seed_cache_upload_forbidden": true
+  },
+  "stage_a": {
+    "graph_seeds": [101],
+    "arms": [
+      "full_control",
+      "no_pair_supervision",
+      "no_cardinality_supervision"
+    ],
+    "groups_per_host": 9,
+    "total_groups": 54,
+    "maximum_lanes": 2,
+    "dual_lane_release_requires_deterministic_equivalence": true,
+    "dual_lane_minimum_throughput_ratio": 1.15,
+    "third_lane_forbidden": true
+  },
+  "immutable_mapping": true,
+  "source_test_access": false,
+  "external_results_may_not_change_stage_b": true
+}
