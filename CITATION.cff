@@ -16,3 +16,13 @@ keywords:
   - instance-set selection
   - graph neural network
   - reproducibility
+preferred-citation:
+  type: article
+  title: "Topology-Aware Query Selection for Surgical Instrument Instance Segmentation"
+  authors:
+    - family-names: Zhang
+      given-names: Ze
+    - family-names: Zhang
+      given-names: Yang
+  year: 2026
+  url: "https://arxiv.org/abs/2608.11607"
