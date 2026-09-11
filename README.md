@@ -4,6 +4,10 @@
 
 Given fixed Mask2Former candidates, this project treats final query selection as a relational, variable-cardinality structured-prediction problem rather than independent candidate scoring.
 
+## 论文版本同步
+
+仓库当前代码、协议和结果说明已与论文 `rewrite_v9_anti_defensive` 对齐。v9 是一次受控的叙事改写：论文强调完整关系路径在指定评估条件下的系统级效果，同时保留组件归因、Endoscapes 迁移和探索性机制诊断的边界。仓库没有新增训练、推理或实验结果。
+
 ## 60 秒概览
 
 - **问题**：像素重叠良好的候选掩码仍可能组成错误的实例集合，例如重复、碎片化、合并、漏检或空帧误激活。
@@ -83,7 +87,7 @@ tests/        自动化测试
 
 ## 论文与引用
 
-关联论文为 **Topology-Aware Query Selection for Surgical Instrument Instance Segmentation**，已公开为 [**arXiv:2608.11607**](https://arxiv.org/abs/2608.11607) **[cs.CV]**。在获得正式期刊接收信息前，本仓库不声明期刊接收状态。
+关联论文为 **Topology-Aware Query Selection for Surgical Instrument Instance Segmentation**，已公开为 [**arXiv:2608.11607**](https://arxiv.org/abs/2608.11607) **[cs.CV]**。本地准备的 v9 论文版本与本仓库当前结果说明保持一致；arXiv 的公开版本号需由作者在 arXiv 页面单独提交后才会更新。在获得正式期刊接收信息前，本仓库不声明期刊接收状态。
 
 软件引用信息见 [`CITATION.cff`](CITATION.cff)。原创代码采用 MIT License；临床数据、候选缓存、模型权重和第三方资产不随仓库分发，详见 [`LICENSE_STATUS.md`](LICENSE_STATUS.md)。
 
@@ -95,3 +99,4 @@ tests/        自动化测试
 4. [实验复现](docs/04_实验复现.md)
 5. [结果与边界](docs/05_结果与边界.md)
 6. [项目讲解](docs/07_项目讲解.md)
+7. [论文 v9 对齐说明](results/CMIG_V9_PAPER_ALIGNMENT.md)
